@@ -1,4 +1,4 @@
-from flask import Flask, redirect
+from flask import Flask, redirect, request
 from subprocess import call
 import socket
 import time
@@ -8,14 +8,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def login():
-    return '<form method="POST">' \
-           '<input name="text">' \
+    return '<h2>Enter you first and last name (no spaces pls):</h2>' \
+    '<form method="POST" action="start">' \
+           '<input name="name">' \
            '<input type="submit">' \
-           '</form>'
+    '</form>'
 
 
-@app.route('/<name>')
-def create_training(name):
+@app.route('/start', methods=['POST'])
+def create_training():
+    name = request.form['name']
+    if len(name) <= 3:
+        return 'Seriously?!'
     port = get_free_tcp_port()
     call("docker run -d -p %d:9000 -p %d:4040 --name=%s training" % (port, port+1, name), shell=True)
     time.sleep(7)
