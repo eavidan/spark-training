@@ -10,5 +10,7 @@ do
     sudo docker run -d -p ${nt_port}:9000 -p ${sparkui_port}:4040 --name=user${i} training
 done
 
+
+
 # sudo docker stop $(sudo docker ps -a -q)
 # sudo docker rm $(sudo docker ps -a -q)

@@ -18,5 +18,12 @@ EOF
 > wget https://ckannet-storage.commondatastorage.googleapis.com/2015-04-26T22:07:22.853Z/pageviews-by-second-tsv.gz
 > gunzip pageviews-by-second-tsv.gz
 > docker build -t training .
+```
+
+```
 > sh run_containers.sh [number of users]
+```
+
+```
+> python site.py
 ```
