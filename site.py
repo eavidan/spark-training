@@ -1,5 +1,5 @@
 from flask import Flask, redirect, request
-from subprocess import call
+from subprocess import call, check_output
 import socket
 import time
 
@@ -8,11 +8,17 @@ app = Flask(__name__)
 
 @app.route('/')
 def login():
-    return '<h2>Enter you first and last name (no spaces pls):</h2>' \
-    '<form method="POST" action="start">' \
+    return '<h2>Give you workspace a unique name please (no spaces):</h2>' \
+           '<form method="POST" action="start">' \
            '<input name="name">' \
            '<input type="submit">' \
-    '</form>'
+           '</form>'
+
+
+@app.route('/list')
+def list():
+    out = check_output('docker ps --format "<tr><td>{{.Names}}</td><td><a href="{{.Labels}}">{{.Labels}}</a></td></tr>"', shell=True)
+    return "<h2>Enviorments:</h2><table><tr><th>Name</th><th>link</th</tr>%s</table>" % out
 
 
 @app.route('/start', methods=['POST'])
@@ -21,7 +27,7 @@ def create_training():
     if len(name) <= 3:
         return 'Seriously?!'
     port = get_free_tcp_port()
-    call("docker run -d -p %d:9000 -p %d:4040 --name=%s training" % (port, port+1, name), shell=True)
+    call("docker run -d -p %d:9000 -p %d:4040 --label=%s:%d --name=%s training" % (port, port+1, 'http://vmiaavm11.iil.intel.com', port, name), shell=True)
     time.sleep(7)
     return redirect("http://vmiaavm11.iil.intel.com:%d" % port, code=302)
 

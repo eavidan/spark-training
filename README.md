@@ -21,9 +21,12 @@ EOF
 ```
 
 ```
-> sh run_containers.sh [number of users]
+> sh run_containers.sh [start user number] [end user number]
 ```
 
 ```
-> python site.py
+> python site 
+
+# will not work
+> docker run -it --rm --name web -v "$PWD":/usr/src/myapp -p 8081:8080 -w /usr/src/myapp python:2 pip install --no-cache-dir Flask && python site.py
 ```
