@@ -30,3 +30,10 @@ EOF
 # will not work
 > docker run -it --rm --name web -v "$PWD":/usr/src/myapp -p 8081:8080 -w /usr/src/myapp python:2 pip install --no-cache-dir Flask && python site.py
 ```
+
+
+kill all containers
+```
+sudo docker stop $(sudo docker ps -a -q)
+sudo docker rm $(sudo docker ps -a -q)
+```

@@ -17,8 +17,8 @@ def login():
 
 @app.route('/list')
 def list():
-    out = check_output('docker ps --format "<tr><td>{{.Names}}</td><td><a href="{{.Labels}}">{{.Labels}}</a></td></tr>"', shell=True)
-    return "<h2>Enviorments:</h2><table><tr><th>Name</th><th>link</th</tr>%s</table>" % out
+    out = check_output('docker ps --format "<tr><td>{{.Names}}</td><td><a href=\"{{.Labels}}\">{{.Labels}}</a></td></tr>"', shell=True)
+    return "<h2>Environments:</h2><table><tr><th>Name</th><th>link</th</tr>%s</table>" % out
 
 
 @app.route('/start', methods=['POST'])
