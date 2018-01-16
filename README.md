@@ -25,7 +25,7 @@ EOF
 ```
 
 ```
-> python site 
+> nohup python site.py &
 
 # will not work
 > docker run -it --rm --name web -v "$PWD":/usr/src/myapp -p 8081:8080 -w /usr/src/myapp python:2 pip install --no-cache-dir Flask && python site.py

@@ -1,0 +1,18 @@
+<style>
+    .centered {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+<head>
+    <link rel="stylesheet" type="text/css" href="ui.css">
+</head>
+<div class="centered">
+    <h2>Give you workspace a unique name please (no spaces):</h2>
+    <form method="POST" action="start" class="form">
+        <input name="name">
+        <input type="submit" value="Create">
+    </form>
+</div>
