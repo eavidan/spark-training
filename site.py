@@ -27,8 +27,8 @@ def create_training():
     if len(name) <= 3:
         return 'Seriously?!'
     port = get_free_tcp_port()
-    call("docker run -d --cpu-period=100000 --cpu-quota=100000 -p %d:9000 -p %d:4040 --label=%s:%d --name=%s training" % (port, port+1, host, port, name), shell=True)
-    time.sleep(7)
+    call("docker run -d --cpu-period=100000 --cpu-quota=300000 -p %d:9000 -p %d:4040 --label=%s:%d --name=%s training" % (port, port+1, host, port, name), shell=True)
+    time.sleep(15)
     return redirect("http://%s:%d" % (host, port), code=302)
 
 
