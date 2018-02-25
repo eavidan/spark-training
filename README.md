@@ -22,6 +22,7 @@ currently only the overview folder will be copie to the notebooks main folder
 ```
 > git clone https://github.com/eavidan/spark-training.git
 > cd spark-training
+# download a data file to be copied into the docker image
 > wget https://ckannet-storage.commondatastorage.googleapis.com/2015-04-26T22:07:22.853Z/pageviews-by-second-tsv.gz
 > gunzip pageviews-by-second-tsv.gz
 > docker build -t training .
