@@ -1,6 +1,9 @@
 # Spark Training with Notebooks
-This repo explains how to setup spark notebook enviroments on a single server.
-Each environment will be created in a different container with its own resources (currently 3 CPUs).
+This repo explains how to setup spark notebook environments on a single server.
+We use [andypetrella](https://github.com/spark-notebook/spark-notebook) docker images of [spark-notebook](http://spark-notebook.io/)
+
+ 
+Each environment is created in a different container with its own resources (currently 3 CPUs).
 
 ## Docker proxy
 in case your server is behind a proxy, run the following
