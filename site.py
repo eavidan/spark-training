@@ -3,6 +3,8 @@ from subprocess import call, check_output
 import socket
 import time
 
+
+
 app = Flask(__name__,
             static_url_path='',
             static_folder='web/static',
@@ -27,8 +29,9 @@ def create_training():
     if len(name) <= 3:
         return 'Seriously?!'
     port = get_free_tcp_port()
+    # --cpu-period=100000 --cpu-quota=300000 gives 3 CPUs for each container. change according to need
     call("docker run -d --cpu-period=100000 --cpu-quota=300000 -p %d:9000 -p %d:4040 --label=%s:%d --name=%s training" % (port, port+1, host, port, name), shell=True)
-    time.sleep(15)
+    time.sleep(10)
     return redirect("http://%s:%d" % (host, port), code=302)
 
 
