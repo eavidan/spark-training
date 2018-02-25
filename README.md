@@ -15,10 +15,10 @@ EOF
 ```
 
 ## Setting up the notebooks environment
-Log in the server we is allocated to the training.
+Log in the server that was allocated to the training.
 This server should have as many CPU cores as possible, as each participant will consume a few.
-Run the following line, which will create the docker image that will be used with all the notebooks.
-currently only the overview folder will be copie to the notebooks main folder
+Run the following lines, which create the docker image that will be used with all the notebooks.
+Currently only the overview folder will be copied to the notebooks main folder
 ```
 > git clone https://github.com/eavidan/spark-training.git
 > cd spark-training
@@ -27,18 +27,18 @@ currently only the overview folder will be copie to the notebooks main folder
 > gunzip pageviews-by-second-tsv.gz
 > docker build -t training .
 ```
-Now, run the website that execute the containers
+Now, run the website that manages the environments creation
 ```
 > nohup python site.py &
 ```
-brawse to `http://[server address]:8080`
+Browse to `http://[server address]:8080`
 ## Some more commands
 ### kill all containers
 ```
 sudo docker stop $(sudo docker ps -a -q)
 sudo docker rm $(sudo docker ps -a -q)
 ```
-### See all running enviroments and their links
+### See all running environments and their links
 ```
 http://[server address]:8080/list
 ```
